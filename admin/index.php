@@ -2,11 +2,11 @@
 
 require '../config.php';
 include '../src/Artigo.php';
+
 $artigo = new Artigo($mysql);
 $artigos = $artigo->exibeTodosArtigos();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -20,12 +20,12 @@ $artigos = $artigo->exibeTodosArtigos();
     <div id="container">
         <h1>Página Administrativa</h1>
         <div>
-            <?php foreach ($artigos as $artigo) { ?>
+            <?php foreach ($artigos as $art) { ?>
             <div id="artigo-admin">
-                <p><?php echo $artigo["titulo"]; ?></p>
+                <p><?php echo $art['titulo']; ?></p>
                 <nav>
-                    <a class="botao" href="editar-artigo.html?=<?php echo $artigo["id"]; ?>">Editar</a>
-                    <a class="botao" href="excluir-artigo.html?=<?php echo $artigo["id"]; ?>">Excluir</a>
+                    <a class="botao" href="editar-artigo.php?id=<?php echo $art['id']; ?>">Editar</a>
+                    <a class="botao" href="excluir-artigo.php?id=<?php echo $art['id']; ?>">Excluir</a>
                 </nav>
             </div>
             <?php } ?>
