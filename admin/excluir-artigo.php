@@ -1,3 +1,15 @@
+<?php
+require "../config.php";
+include "../src/Artigo.php";
+require "../src/redireciona.php";
+
+$artigo = new Artigo($mysql);
+$artigo->removeArtigo($_POST["id"]);
+
+redireciona("/blog/admin/index.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
