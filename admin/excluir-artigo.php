@@ -1,15 +1,18 @@
 <?php
-require "../config.php";
-include "../src/Artigo.php";
-require "../src/redireciona.php";
 
-$artigo = new Artigo($mysql);
-$artigo->removeArtigo($_POST["id"]);
+require '../config.php';
+include '../src/Artigo.php';
+require '../src/redireciona.php';
 
-redireciona("/blog/admin/index.php");
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $artigo = new Artigo($mysql);
+    $artigo->removeArtigo($_POST["id"]);
+
+    redireciona('/blog/admin/index.php');
+}
+
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
